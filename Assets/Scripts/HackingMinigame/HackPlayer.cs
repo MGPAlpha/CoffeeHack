@@ -40,4 +40,8 @@ public class HackPlayer : MonoBehaviour
             fireCooldown = baseFirePeriod;
         }
     }
+
+    void Damage(float val) {
+        
+    }
 }
