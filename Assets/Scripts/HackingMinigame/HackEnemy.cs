@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class HackEnemy : MonoBehaviour
 {
+
+    [SerializeField] private ParticleSystem particleSystem;
+    
+    [SerializeField] private GameObject explosionPrefab;
+    [SerializeField] private GameObject hitPrefab;
+
     [SerializeField] private float speed = .5f;
     [SerializeField] private float health = 1;
     [SerializeField] private float damage = 1;
@@ -28,12 +34,25 @@ public class HackEnemy : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("HackPlayer")) {
             HackPlayer player = other.GetComponent<HackPlayer>();
             player.Damage(damage);
+            float rotAngle = Vector3.Angle(target.position - transform.position, Vector3.down);
+            if (target.position.x < transform.position.x ) rotAngle = -rotAngle;
+            Instantiate(hitPrefab, (transform.position + 3*target.position) / 4, Quaternion.Euler(0, 0, rotAngle));
+            DetachParticleTrail();
             Destroy(this.gameObject);
         }
     }
 
     public void Damage(float d) {
         health -= d;
-        if (health <= 0) Destroy(this.gameObject);
+        if (health <= 0) {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            DetachParticleTrail();
+            Destroy(this.gameObject);
+        }
+    }
+
+    void DetachParticleTrail() {
+            particleSystem.transform.parent = null;
+            particleSystem.Stop();
     }
 }

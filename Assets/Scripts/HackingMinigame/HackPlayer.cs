@@ -15,6 +15,18 @@ public class HackPlayer : MonoBehaviour
     [SerializeField] private float baseFirePeriod = 1;
     [SerializeField] private float firePeriodSpeedFactor = 5;
 
+    public float MaxHealth {
+        get {return maxHealth;}
+        private set {maxHealth = value;}
+    }
+    [SerializeField] private float maxHealth = 50;
+
+    public float Health {
+        get {return health;}
+        private set {health = value;}
+    }
+    [SerializeField] private float health;
+
     [SerializeField] private GameObject bulletPrefab;
 
     private PlayerInput m_playerInput;
@@ -31,6 +43,8 @@ public class HackPlayer : MonoBehaviour
     {
         m_playerInput = GetComponent<PlayerInput>();
         m_turnAction = m_playerInput.actions.FindAction("Turn");
+
+        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -51,6 +65,9 @@ public class HackPlayer : MonoBehaviour
     }
 
     public void Damage(float val) {
-        Debug.Log("I got damaged");
+        health -= val;
+        if (health <= 0) {
+            Debug.Log("Dead");
+        }
     }
 }
