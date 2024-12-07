@@ -6,9 +6,26 @@ using UnityEngine.InputSystem;
 
 public class HackPlayer : MonoBehaviour
 {
+
+    public static HackPlayer Instance {
+        get; private set;
+    }
+
     [SerializeField] private float turnSpeed = 5f;
     [SerializeField] private float baseFirePeriod = 1;
     [SerializeField] private float firePeriodSpeedFactor = 5;
+
+    public float MaxHealth {
+        get {return maxHealth;}
+        private set {maxHealth = value;}
+    }
+    [SerializeField] private float maxHealth = 50;
+
+    public float Health {
+        get {return health;}
+        private set {health = value;}
+    }
+    [SerializeField] private float health;
 
     [SerializeField] private GameObject bulletPrefab;
 
@@ -17,11 +34,17 @@ public class HackPlayer : MonoBehaviour
 
     private float fireCooldown = 0;
 
+    void Awake() {
+        Instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         m_playerInput = GetComponent<PlayerInput>();
         m_turnAction = m_playerInput.actions.FindAction("Turn");
+
+        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -38,6 +61,13 @@ public class HackPlayer : MonoBehaviour
         if (fireCooldown == 0) {
             Instantiate(bulletPrefab, transform.position, transform.rotation);
             fireCooldown = baseFirePeriod;
+        }
+    }
+
+    public void Damage(float val) {
+        health -= val;
+        if (health <= 0) {
+            Debug.Log("Dead");
         }
     }
 }
