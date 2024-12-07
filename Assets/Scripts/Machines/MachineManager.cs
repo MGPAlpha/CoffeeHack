@@ -10,6 +10,8 @@ public class MachineManager : MonoBehaviour
   public static MachineManager _instance;
 
   public System.EventHandler<StatusChangeArgs> machineStatusChanged;
+  public float delayCoffeeToHacking = 5;
+  public float delayHackingToCoffee = 5;
 
   private void Awake()
   {
@@ -38,11 +40,12 @@ public class MachineManager : MonoBehaviour
     if (currStatus == MachineStatus.Hacking && status == MachineStatus.Coffee)
     {
       SetStatus(m, MachineStatus.Waiting);
-      CoroutineUtils.ExecuteAfterDelay(() => SetStatus(m, status), this, 5);
+      CoroutineUtils.ExecuteAfterDelay(() => SetStatus(m, status), this, delayHackingToCoffee);
     }
     if (currStatus == MachineStatus.Coffee && status == MachineStatus.Hacking)
     {
-      SetStatus(m, status);
+      SetStatus(m, MachineStatus.Waiting);
+      CoroutineUtils.ExecuteAfterDelay(() => SetStatus(m, status), this, delayCoffeeToHacking);
     }
   }
 

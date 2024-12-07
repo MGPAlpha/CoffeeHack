@@ -15,11 +15,13 @@ public class MachineStatusItem : MonoBehaviour
     public Image hackingStatusImage;
 
     public TextMeshProUGUI statusText;
+    public Button toggleButton;
 
     public void OnStatusChange(MachineStatus status)
     {
         currStatus = status;
         statusText.text = status.ToString();
+        toggleButton.interactable = status != MachineStatus.Waiting;
     }
 
     public void ToggleStatus()
