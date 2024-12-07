@@ -12,10 +12,10 @@ TagManager:
   - Water
   - UI
   - 
-  - 
-  - 
-  - 
-  - 
+  - HackPlayer
+  - HackWalls
+  - HackBullet
+  - HackEnemy
   - 
   - 
   - 
