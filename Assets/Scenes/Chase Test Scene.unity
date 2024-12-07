@@ -122,17 +122,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &144567188 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7867492151625819039, guid: 439a2f89aa39d6cc2b225dcde0081752, type: 3}
-  m_PrefabInstance: {fileID: 532694165}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &166006603
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,7 +281,7 @@ PrefabInstance:
     - target: {fileID: 6822559183317423560, guid: 439a2f89aa39d6cc2b225dcde0081752, type: 3}
       propertyPath: statusText
       value: 
-      objectReference: {fileID: 144567188}
+      objectReference: {fileID: 0}
     - target: {fileID: 6822559183317423560, guid: 439a2f89aa39d6cc2b225dcde0081752, type: 3}
       propertyPath: activeColor.b
       value: 0
@@ -332,11 +321,11 @@ PrefabInstance:
     - target: {fileID: 6822559183317423560, guid: 439a2f89aa39d6cc2b225dcde0081752, type: 3}
       propertyPath: coffeeStatusImage
       value: 
-      objectReference: {fileID: 626204807}
+      objectReference: {fileID: 0}
     - target: {fileID: 6822559183317423560, guid: 439a2f89aa39d6cc2b225dcde0081752, type: 3}
       propertyPath: hackingStatusImage
       value: 
-      objectReference: {fileID: 2016224112}
+      objectReference: {fileID: 0}
     - target: {fileID: 7420658804840191274, guid: 439a2f89aa39d6cc2b225dcde0081752, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
@@ -445,17 +434,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 439a2f89aa39d6cc2b225dcde0081752, type: 3}
---- !u!114 &626204807 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 853565370292836829, guid: 439a2f89aa39d6cc2b225dcde0081752, type: 3}
-  m_PrefabInstance: {fileID: 532694165}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1766209759
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,17 +502,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2016224112 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7983186041318684841, guid: 439a2f89aa39d6cc2b225dcde0081752, type: 3}
-  m_PrefabInstance: {fileID: 532694165}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
