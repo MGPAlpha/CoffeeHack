@@ -6,6 +6,11 @@ using UnityEngine.InputSystem;
 
 public class HackPlayer : MonoBehaviour
 {
+
+    public static HackPlayer Instance {
+        get; private set;
+    }
+
     [SerializeField] private float turnSpeed = 5f;
     [SerializeField] private float baseFirePeriod = 1;
     [SerializeField] private float firePeriodSpeedFactor = 5;
@@ -16,6 +21,10 @@ public class HackPlayer : MonoBehaviour
     private InputAction m_turnAction;
 
     private float fireCooldown = 0;
+
+    void Awake() {
+        Instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +50,7 @@ public class HackPlayer : MonoBehaviour
         }
     }
 
-    void Damage(float val) {
-        
+    public void Damage(float val) {
+        Debug.Log("I got damaged");
     }
 }
