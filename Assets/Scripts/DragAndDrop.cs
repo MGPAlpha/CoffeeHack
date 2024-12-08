@@ -5,12 +5,15 @@ using UnityEngine;
 
 public class DragAndDrop : MonoBehaviour
 {
-    [SerializeField] private Collider2D _overlapTrigger;
-    [SerializeField] private Collider2D _rigidCollider;
-    [SerializeField] private bool _physicsEnabled;
+    [SerializeField] protected SpriteRenderer _spriteRenderer;
+    [SerializeField] protected Collider2D _overlapTrigger;
+    [SerializeField] protected Collider2D _rigidCollider;
+    [SerializeField] protected bool _physicsEnabled;
+
+    protected LayerMask colMask;
 
 
-    private Rigidbody2D _rb;
+    protected Rigidbody2D _rb;
     public List<Collider2D> triggers;
     public Vector3 offset;
     public Vector3 returnPosition;
@@ -18,6 +21,7 @@ public class DragAndDrop : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
+        colMask = LayerMask.GetMask("Coffee", "CoffeeCup", "CoffeeIngredients");
         if (_physicsEnabled)
         {
             _rb = gameObject.GetComponent<Rigidbody2D>();
@@ -50,6 +54,8 @@ public class DragAndDrop : MonoBehaviour
         {
             _rigidCollider.enabled = false;
         }
+
+        _spriteRenderer.sortingOrder = 10;
     }
 
     public void Drop()
@@ -66,6 +72,8 @@ public class DragAndDrop : MonoBehaviour
         }
 
         offset = Vector3.zero;
+
+        _spriteRenderer.sortingOrder = 0;
 
         GetInteract();
     }
@@ -110,7 +118,10 @@ public class DragAndDrop : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D col)
     {
-        triggers.Add(col);
+        if (((1 << col.gameObject.layer) & colMask) != 0)
+        {
+            triggers.Add(col);
+        }
     }
 
     public void OnTriggerExit2D(Collider2D col)

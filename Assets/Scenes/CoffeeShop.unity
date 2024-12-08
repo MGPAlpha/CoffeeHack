@@ -249,6 +249,67 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1001 &936766708
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1230482496550216861, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790117027407334621, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
+      propertyPath: m_Name
+      value: Cafe Scene
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744085418752411978, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744085418752411978, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744085418752411978, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744085418752411978, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744085418752411978, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744085418752411978, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744085418752411978, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744085418752411978, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744085418752411978, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744085418752411978, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
 --- !u!1 &2062290005
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,68 +450,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c41e651cb23fe3ea9fe6de7a52f76da, type: 3}
---- !u!1001 &3535244627509705471
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3790117027407334621, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
-      propertyPath: m_Name
-      value: Cafe Scene
-      objectReference: {fileID: 0}
-    - target: {fileID: 5744085418752411978, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5744085418752411978, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5744085418752411978, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.94
-      objectReference: {fileID: 0}
-    - target: {fileID: 5744085418752411978, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5744085418752411978, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5744085418752411978, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5744085418752411978, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5744085418752411978, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5744085418752411978, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5744085418752411978, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
-  - {fileID: 3535244627509705471}
   - {fileID: 936652039269380860}
   - {fileID: 2062290008}
+  - {fileID: 936766708}

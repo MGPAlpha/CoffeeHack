@@ -2,12 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dispenser : MonoBehaviour, IInteractable
+public class DragIngredient : DragAndDrop, IInteractable
 {
     public Ingredient ingredient;
-    public List<Collider2D> triggers;
-
-    protected LayerMask colMask;
 
     public void Interact(DragAndDrop drag)
     {
@@ -26,25 +23,12 @@ public class Dispenser : MonoBehaviour, IInteractable
     // Start is called before the first frame update
     void Start()
     {
-        colMask = LayerMask.GetMask("Coffee", "CoffeeCup", "CoffeeIngredients");
+        base.Start();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    public void OnTriggerEnter2D(Collider2D col)
-    {
-        if (((1 << col.gameObject.layer) & colMask) != 0)
-        {
-            triggers.Add(col);
-        }
-    }
-
-    public void OnTriggerExit2D(Collider2D col)
-    {
-        triggers.Remove(col);
+        base.Update();
     }
 }

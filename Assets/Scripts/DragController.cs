@@ -67,7 +67,11 @@ public class DragController : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(mouseRay.origin, mouseRay.direction);
         if (hit)
         {
-            HoverAction?.Invoke(hit.transform.gameObject);
+            HoverAction?.Invoke(hit.collider.transform.gameObject);
+        }
+        else
+        {
+            HoverAction?.Invoke(null);
         }
     }
 
@@ -139,14 +143,11 @@ public class DragController : MonoBehaviour
                 ClickAction?.Invoke(topObject);
             }
         }
-        else
+        Debug.Log("Drag!");
+        if (heldObject)
         {
-            Debug.Log("Drag!");
-            if (heldObject)
-            {
-                heldObject.Drop();
-                heldObject = null;
-            }
+            heldObject.Drop();
+            heldObject = null;
         }
 
         topObject = null;

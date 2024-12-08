@@ -17,6 +17,8 @@ public class Cup : DragAndDrop, IInteractable
         base.Start();
         _ingredientCanvas.enabled = false;
         ingredients = new List<Ingredient>();
+
+        DragController.HoverAction += ShowCanvas;
     }
 
     // Update is called once per frame
@@ -31,16 +33,30 @@ public class Cup : DragAndDrop, IInteractable
         {
             ((CoffeeJug)drag).Interact(this);
         }
+        if (drag.GetType() == typeof(DragIngredient))
+        {
+            ((DragIngredient)drag).Interact(this);
+        }
     }
 
     public void AddIngredient(Ingredient ingredient)
     {
         ingredients.Add(ingredient);
-        _ingredientListRenderer.ingredientList.Add(ingredient);
+        _ingredientListRenderer.AddIngredient(ingredient);
     }
 
     public void TrashCup()
     {
         Destroy(gameObject);
+    }
+
+    public void ShowCanvas(GameObject gO)
+    {
+        if (gO && gO.Equals(gameObject) && !DragController._instance.heldObject)
+        {
+            _ingredientCanvas.enabled = true;
+            return;
+        }
+        _ingredientCanvas.enabled = false;
     }
 }

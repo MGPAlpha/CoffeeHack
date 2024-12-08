@@ -31,7 +31,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2507833891412862423}
   - {fileID: 8588822183934615828}
@@ -80,7 +80,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.82, y: 1.26}
+  m_Size: {x: 1.16, y: 1.95}
   m_EdgeRadius: 0
 --- !u!70 &2672622437492930964
 CapsuleCollider2D:
@@ -115,7 +115,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.09, y: 1.68}
+  m_Size: {x: 1.37, y: 2.19}
   m_Direction: 0
 --- !u!114 &5322052191784910744
 MonoBehaviour:
@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33f927716cba96498e8a36816916ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 5869870414276525252}
   _overlapTrigger: {fileID: 2672622437492930964}
   _rigidCollider: {fileID: 2681291709906965057}
   _physicsEnabled: 1
@@ -193,7 +194,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 7.75, y: 7.75, z: 7.75}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 435267916100304189}
@@ -258,6 +259,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 435267916100304189}
     m_Modifications:
+    - target: {fileID: 1222853537635974354, guid: 65f31a5164df1a74dbd74ce627a60dd1, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 2076872964162259331, guid: 65f31a5164df1a74dbd74ce627a60dd1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -291,6 +296,18 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2076872964162259331, guid: 65f31a5164df1a74dbd74ce627a60dd1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 2076872964162259331, guid: 65f31a5164df1a74dbd74ce627a60dd1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 2076872964162259331, guid: 65f31a5164df1a74dbd74ce627a60dd1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 2076872964162259331, guid: 65f31a5164df1a74dbd74ce627a60dd1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -320,11 +337,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2076872964162259331, guid: 65f31a5164df1a74dbd74ce627a60dd1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.714
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 2076872964162259331, guid: 65f31a5164df1a74dbd74ce627a60dd1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.843
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2076872964162259331, guid: 65f31a5164df1a74dbd74ce627a60dd1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -338,6 +355,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2076872964162259331, guid: 65f31a5164df1a74dbd74ce627a60dd1, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2393119040630007029, guid: 65f31a5164df1a74dbd74ce627a60dd1, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3656458177434592532, guid: 65f31a5164df1a74dbd74ce627a60dd1, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794707346881306683, guid: 65f31a5164df1a74dbd74ce627a60dd1, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 3931268656667558051, guid: 65f31a5164df1a74dbd74ce627a60dd1, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -346,9 +379,25 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6141012019608847645, guid: 65f31a5164df1a74dbd74ce627a60dd1, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 6295255498972801802, guid: 65f31a5164df1a74dbd74ce627a60dd1, type: 3}
       propertyPath: m_Name
       value: RecipeListCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6295255498972801802, guid: 65f31a5164df1a74dbd74ce627a60dd1, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098927671052873874, guid: 65f31a5164df1a74dbd74ce627a60dd1, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217770112936668991, guid: 65f31a5164df1a74dbd74ce627a60dd1, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

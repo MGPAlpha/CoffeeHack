@@ -5,6 +5,7 @@ using UnityEngine;
 public class CoffeeMachine : Machine
 {
     [SerializeField] private CoffeeJug _coffeeJug;
+    [SerializeField] private GameObject _coffeeButton;
 
     public float secondsToMakeCoffee = 5.0f;
 
@@ -48,7 +49,7 @@ public class CoffeeMachine : Machine
 
     private void Click(GameObject gO)
     {
-        if (gO.Equals(gameObject))
+        if (gO.Equals(_coffeeButton))
         {
             StartMakeCoffee();
         }
@@ -63,12 +64,15 @@ public class CoffeeMachine : Machine
             return;
         }
         MachineManager.SwitchMode(machineType, MachineStatus.Waiting);
-        CoroutineUtils.ExecuteAfterDelay(() => MakeCoffee(), this, secondsToMakeCoffee);
+        CoroutineUtils.ExecuteAfterDelay(() => MakeCoffee(), this, secondsToMakeCoffee/_coffeeJug.MaxUses);
     }
 
     private void MakeCoffee()
     {
-        Debug.Log("Make Coffee!");
-        _coffeeJug.FillJug();
+        _coffeeJug.NumUses++;
+        if (_coffeeJug.NumUses < _coffeeJug.MaxUses)
+        {
+            CoroutineUtils.ExecuteAfterDelay(() => MakeCoffee(), this, secondsToMakeCoffee / _coffeeJug.MaxUses);
+        }
     }
 }
