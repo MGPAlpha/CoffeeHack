@@ -25,6 +25,10 @@ public class Cup : DragAndDrop, IInteractable
     public void Update()
     {
         base.Update();
+        if (!canGrab)
+        {
+            _rb.velocity = Vector2.zero;
+        }
     }
 
     public void Interact(DragAndDrop drag)

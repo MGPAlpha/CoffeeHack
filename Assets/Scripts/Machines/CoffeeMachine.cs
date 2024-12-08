@@ -7,12 +7,15 @@ public class CoffeeMachine : Machine
     [SerializeField] private CoffeeJug _coffeeJug;
     [SerializeField] private GameObject _coffeeButton;
 
+    public bool brewingCoffee;
+
     public float secondsToMakeCoffee = 5.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         base.Start();
+        brewingCoffee = false;
     }
 
     public void OnEnable()
@@ -63,6 +66,8 @@ public class CoffeeMachine : Machine
             //play error sound
             return;
         }
+        
+        _coffeeJug.canGrab = false;
         MachineManager.SwitchMode(machineType, MachineStatus.Waiting);
         CoroutineUtils.ExecuteAfterDelay(() => MakeCoffee(), this, secondsToMakeCoffee/_coffeeJug.MaxUses);
     }
@@ -73,6 +78,10 @@ public class CoffeeMachine : Machine
         if (_coffeeJug.NumUses < _coffeeJug.MaxUses)
         {
             CoroutineUtils.ExecuteAfterDelay(() => MakeCoffee(), this, secondsToMakeCoffee / _coffeeJug.MaxUses);
+        } else
+        {
+            MachineManager.SwitchMode(machineType, MachineStatus.Coffee);
+            _coffeeJug.canGrab = true;
         }
     }
 }

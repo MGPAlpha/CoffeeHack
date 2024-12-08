@@ -120,7 +120,7 @@ public class DragController : MonoBehaviour
             return;
         }
         DragAndDrop drag = gO.GetComponent<DragAndDrop>();
-        if (drag)
+        if (drag && drag.canGrab)
         {
             heldObject = drag;
             heldObject.PickUp();

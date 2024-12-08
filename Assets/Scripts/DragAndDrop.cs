@@ -18,6 +18,8 @@ public class DragAndDrop : MonoBehaviour
     public Vector3 offset;
     public Vector3 returnPosition;
     public bool isHeld;
+
+    public bool canGrab;
     // Start is called before the first frame update
     public void Start()
     {
@@ -33,6 +35,7 @@ public class DragAndDrop : MonoBehaviour
         }
 
         isHeld = false;
+        canGrab = true;
     }
 
     // Update is called once per frame
