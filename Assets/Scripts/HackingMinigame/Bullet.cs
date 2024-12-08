@@ -20,9 +20,12 @@ public class Bullet : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        
         Debug.Log("Collided");
         Destroy(gameObject);
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("HackEnemy")) {
+            other.GetComponent<HackEnemy>().Damage(1);
+        }
     }
 
 
