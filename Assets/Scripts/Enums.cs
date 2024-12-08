@@ -20,5 +20,10 @@ public enum Ingredient
     Milk,
     Oat_Milk,
     Espresso,
-    Ice
+    Ice,
+    Blender,
+    Honey,
+    Vanilla,
+    Caramel,
+    Chocolate
 }

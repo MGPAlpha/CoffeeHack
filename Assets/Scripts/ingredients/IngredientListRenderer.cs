@@ -14,24 +14,14 @@ public class IngredientListRenderer : MonoBehaviour
     private int ingredientsCount;
 
 
-    private void Start()
-    {
-        foreach (var image in IngredientImages)
-        {
-            image.enabled = false;
-        }
-        AddIngredients(ingredientList, false);
-    }
-
     public void AddIngredient(Ingredient ingredient, bool addToList = true)
     {
         print(ingredient.ToString());
-        if (ingredientsCount >= ingredientList.Count)
+        if (ingredientsCount >= IngredientImages.Count)
         {
             Debug.LogError("Too many ingredients");
             return;
         }
-        Vector3 pos = topOfList + offset * ingredientsCount;
         if (addToList)
         {
             ingredientList.Add(ingredient);
