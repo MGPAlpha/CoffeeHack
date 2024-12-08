@@ -6,8 +6,8 @@ using UnityEngine;
 public class DragAndDrop : MonoBehaviour
 {
     [SerializeField] protected SpriteRenderer _spriteRenderer;
-    [SerializeField] protected Collider2D _overlapTrigger;
-    [SerializeField] protected Collider2D _rigidCollider;
+    [SerializeField] public Collider2D _overlapTrigger;
+    [SerializeField] public Collider2D _rigidCollider;
     [SerializeField] protected bool _physicsEnabled;
 
     protected LayerMask colMask;
