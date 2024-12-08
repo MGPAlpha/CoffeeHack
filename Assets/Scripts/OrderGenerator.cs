@@ -30,17 +30,17 @@ public class OrderGenerator
                     }
                     else
                     {
-                        order.Add(pickRandomIngredient());
+                        order.Add(PickRandomIngredient());
                     }
                 }
                 else
                 {
-                    order.Add(pickRandomIngredient());
+                    order.Add(PickRandomIngredient());
                 }
             }
             else
             {
-                order.Add(pickRandomIngredient());
+                order.Add(PickRandomIngredient());
             }
             complexity--;
         }
@@ -49,14 +49,15 @@ public class OrderGenerator
         return order;
     }
 
-    private static Ingredient pickRandomIngredient()
+    private static Ingredient PickRandomIngredient()
     {
-        float random = Random.Range(0, 8);
+        float random = Random.Range(0, 10);
         if (random < 1) return Ingredient.Caramel;
         else if (random < 2) return Ingredient.Vanilla;
         else if (random < 3) return Ingredient.Honey;
         else if (random < 4) return Ingredient.Chocolate;
         else if (random < 6) return Ingredient.Oat_Milk;
-        return Ingredient.Milk;
+        else if (random < 8) return Ingredient.Milk;
+        else return Ingredient.Espresso;
     }
 }
