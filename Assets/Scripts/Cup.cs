@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Cup : DragAndDrop, IInteractable
 {
+    [SerializeField] private Canvas _ingredientCanvas;
+    [SerializeField] private IngredientListRenderer _ingredientListRenderer;
     public List<Ingredient> ingredients;
 
     public int Priority { get => 10;}
@@ -13,7 +15,10 @@ public class Cup : DragAndDrop, IInteractable
     public void Start()
     {
         base.Start();
+        _ingredientCanvas.enabled = false;
         ingredients = new List<Ingredient>();
+
+        DragController.HoverAction += ShowCanvas;
     }
 
     // Update is called once per frame
@@ -28,15 +33,31 @@ public class Cup : DragAndDrop, IInteractable
         {
             ((CoffeeJug)drag).Interact(this);
         }
+        if (drag.GetType() == typeof(DragIngredient))
+        {
+            ((DragIngredient)drag).Interact(this);
+        }
     }
 
     public void AddIngredient(Ingredient ingredient)
     {
         ingredients.Add(ingredient);
+        _ingredientListRenderer.AddIngredient(ingredient);
     }
 
     public void TrashCup()
     {
-        Destroy(this);
+        DragController.HoverAction -= ShowCanvas;
+        Destroy(gameObject);
+    }
+
+    public void ShowCanvas(GameObject gO)
+    {
+        if (gO && gO.Equals(gameObject) && !DragController._instance.heldObject)
+        {
+            _ingredientCanvas.enabled = true;
+            return;
+        }
+        _ingredientCanvas.enabled = false;
     }
 }
