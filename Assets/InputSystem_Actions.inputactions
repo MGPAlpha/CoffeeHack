@@ -22,15 +22,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Attack Hold",
-                    "type": "Button",
-                    "id": "6469d6d8-1bfe-4b70-892c-e331fb3c5144",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -77,17 +68,6 @@
                     "action": "Turn",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "b3717e1f-13e1-4960-91a1-96a7569b6850",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "Press(behavior=2)",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Attack Hold",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },
@@ -602,6 +582,54 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Drag and Drop",
+            "id": "422f34bd-e6ae-450f-be1f-534a7e4c4136",
+            "actions": [
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "f8ca8f7b-9e94-4833-b128-5e4e8fb4c0c6",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pointer",
+                    "type": "Value",
+                    "id": "01c958b3-9cec-4d1f-a35b-fee0c91dea33",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "71527c73-28d2-4443-baed-29c7ac8d9ec1",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ce3b5874-5fcb-4a32-b021-4fdb7fc914c2",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Pointer",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
