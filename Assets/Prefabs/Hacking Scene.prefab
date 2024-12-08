@@ -703,15 +703,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 3
   duration: 60
-  spawnEarnRate: 1
+  spawnEarnRate: 2.5
   spawnEarnRateCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
@@ -719,8 +719,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 1
-      outSlope: 1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
@@ -757,7 +757,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   - prefab: {fileID: 8540670195140034782, guid: fd060602bd992a6618003a16cecbd364, type: 3}
-    cost: 5
+    cost: 7
     weightScale: 1
     weight:
       serializedVersion: 2
@@ -1036,8 +1036,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnSpeed: 360
   goodTurnSpeed: 200
-  baseFirePeriod: 1
-  firePeriodSpeedFactor: 5
+  baseFirePeriod: 0.4
+  firePeriodSpeedFactor: 2
   maxHealth: 50
   health: 0
   bulletPrefab: {fileID: 2427754324080493382, guid: b6aafd3b12956749b9e08ba7d025aba5, type: 3}
