@@ -10,6 +10,7 @@ public class HackEnemy : MonoBehaviour
     
     [SerializeField] private GameObject explosionPrefab;
     [SerializeField] private GameObject hitPrefab;
+    [SerializeField] private GameObject freezePrefab;
 
     [SerializeField] private float speed = .5f;
     [SerializeField] private float health = 1;
@@ -35,6 +36,7 @@ public class HackEnemy : MonoBehaviour
     private IEnumerator FreezeCoroutine(float damage, float damageRate) {
         while (true) {
             Damage(damage);
+            Instantiate(freezePrefab, transform.position, Quaternion.identity);
             yield return new WaitForSeconds(1f/damageRate);
         }
     }
