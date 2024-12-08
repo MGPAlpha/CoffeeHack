@@ -24,7 +24,7 @@ public class BlenderMachine : Machine
         {
             return;
         }
-        MachineManager.SwitchMode(machineType, MachineStatus.Waiting);
+        MachineManager.SwitchMode(machineType, MachineStatus.Running);
         cup.canGrab = false;
         cup.transform.position = _attachPoint.transform.position;
         heldCup = cup.gameObject;

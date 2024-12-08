@@ -3,7 +3,8 @@ public enum MachineStatus
 {
     Hacking,
     Coffee,
-    Waiting
+    Waiting,
+    Running
 }
 
 public enum MachineType

@@ -68,7 +68,7 @@ public class CoffeeMachine : Machine
         }
         
         _coffeeJug.canGrab = false;
-        MachineManager.SwitchMode(machineType, MachineStatus.Waiting);
+        MachineManager.SwitchMode(machineType, MachineStatus.Running);
         CoroutineUtils.ExecuteAfterDelay(() => MakeCoffee(), this, secondsToMakeCoffee/_coffeeJug.MaxUses);
     }
 
