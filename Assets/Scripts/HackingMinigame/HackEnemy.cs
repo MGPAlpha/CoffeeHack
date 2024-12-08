@@ -32,6 +32,18 @@ public class HackEnemy : MonoBehaviour
         }
     }
 
+    private IEnumerator FreezeCoroutine(float damage, float damageRate) {
+        while (true) {
+            Damage(damage);
+            yield return new WaitForSeconds(1f/damageRate);
+        }
+    }
+
+    public void ApplyFreeze(float speedReductionFactor, float damage, float damageRate) {
+        speed = speed * speedReductionFactor;
+        StartCoroutine(FreezeCoroutine(damage, damageRate));
+    }
+
     // Update is called once per frame
     void Update()
     {
