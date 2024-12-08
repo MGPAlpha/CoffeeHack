@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,19 +8,31 @@ public class DragController : MonoBehaviour
 {
     [SerializeField] private InputActionAsset _playerControls;
 
+    public static DragController _instance;
+
     public InputActionMap playerActionMap;
     public InputAction playerDragAction;
     public InputAction playerPointAction;
 
+    public static event Action<GameObject> ClickAction;
+    public static event Action<GameObject> StartClickAction;
+
     public static Vector2 mousePos;
     public static Vector2 prevMousePos;
 
+    public float clickEdge = 0.25f;
+
     public DragAndDrop heldObject;
+    public GameObject topObject;
+
+    private float _mouseDown;
 
 
     // Start is called before the first frame update
     void Awake()
     {
+        _instance = this;
+
         playerActionMap = _playerControls.FindActionMap("Drag and Drop");
         playerDragAction = playerActionMap.FindAction("Click");
         playerPointAction = playerActionMap.FindAction("Pointer");
@@ -66,18 +79,25 @@ public class DragController : MonoBehaviour
 
     private void MouseDown(InputAction.CallbackContext context)
     {
-        Ray mouseRay = Camera.main.ScreenPointToRay(Mouse.current.position.value);
+        Debug.Log("Mouse Down");
+        _mouseDown = Time.time;
+        Ray mouseRay = Camera.main.ScreenPointToRay(mousePos);
         RaycastHit2D hit = Physics2D.Raycast(mouseRay.origin, mouseRay.direction);
         if (hit)
         {
-            DragAndDrop drag = hit.transform.gameObject.GetComponent<DragAndDrop>();
-            if (!drag)
-            {
-                return;
-            }
+            topObject = hit.collider.transform.gameObject;
+            HoldObject(topObject);
+            
+        }
+        StartClickAction?.Invoke(topObject);
+    }
 
+    public void HoldObject(GameObject gO)
+    {
+        DragAndDrop drag = gO.GetComponent<DragAndDrop>();
+        if (drag)
+        {
             heldObject = drag;
-            Debug.Log(heldObject);
             heldObject.PickUp();
         }
     }
@@ -90,10 +110,24 @@ public class DragController : MonoBehaviour
     private void MouseUp(InputAction.CallbackContext context)
     {
         Debug.Log("Canceled!");
-        if (heldObject)
+        if ((Time.time - _mouseDown) <= clickEdge)
         {
-            heldObject.Drop();
-            heldObject = null;
+            Debug.Log("Just a click");
+            if (topObject)
+            {
+                ClickAction?.Invoke(topObject);
+            }
         }
+        else
+        {
+            Debug.Log("Drag!");
+            if (heldObject)
+            {
+                heldObject.Drop();
+                heldObject = null;
+            }
+        }
+
+        topObject = null;
     }
 }

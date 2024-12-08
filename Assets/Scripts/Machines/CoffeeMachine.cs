@@ -4,12 +4,41 @@ using UnityEngine;
 
 public class CoffeeMachine : Machine
 {
-    [SerializeField]
-    private CoffeeJug _coffeeJug;
+    [SerializeField] private CoffeeJug _coffeeJug;
+
+    public float secondsToMakeCoffee = 5.0f;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        base.Start();
+    }
+
+    public void OnEnable()
+    {
+        base.OnEnable();
+        CoroutineUtils.ExecuteAfterEndOfFrame(() => DragController.ClickAction += Click, this);
+    }
+
+    public void OnDisable()
+    {
+        base.OnDisable();
+    }
 
     protected override void InteractMachine(Cup cup)
     {
+        if (_coffeeJug.NumUses <= 0)
+        {
+            //play error noise
+            return;
+        }
+
+        if (cup.ingredients.Contains(Ingredient.Coffee))
+        {
+            return;
+        }
         cup.AddIngredient(Ingredient.Coffee);
+        _coffeeJug.UseCoffee();
     }
 
     protected override void SetMachineType()
@@ -17,17 +46,29 @@ public class CoffeeMachine : Machine
         machineType = MachineType.Coffee;
     }
 
-    // Start is called before the first frame update
-    void Awake()
+    private void Click(GameObject gO)
     {
-        
+        if (gO.Equals(gameObject))
+        {
+            StartMakeCoffee();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartMakeCoffee()
     {
-        
+        Debug.Log("Start Make Coffee");
+        if (machineStatus != MachineStatus.Coffee)
+        {
+            //play error sound
+            return;
+        }
+        MachineManager.SwitchMode(machineType, MachineStatus.Waiting);
+        CoroutineUtils.ExecuteAfterDelay(() => MakeCoffee(), this, secondsToMakeCoffee);
     }
 
-    
+    private void MakeCoffee()
+    {
+        Debug.Log("Make Coffee!");
+        _coffeeJug.FillJug();
+    }
 }
