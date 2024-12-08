@@ -6,9 +6,11 @@ public class HackEnemy : MonoBehaviour
 {
 
     [SerializeField] private ParticleSystem particleSystem;
+    private SpriteRenderer sprite;
     
     [SerializeField] private GameObject explosionPrefab;
     [SerializeField] private GameObject hitPrefab;
+    [SerializeField] private GameObject freezePrefab;
 
     [SerializeField] private float speed = .5f;
     [SerializeField] private float health = 1;
@@ -19,12 +21,35 @@ public class HackEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        sprite = GetComponentInChildren<SpriteRenderer>();
+        CheckVisibility();
+    }
+
+    void CheckVisibility() {
+        if (MachineManager._instance.machineStatusDictionary[MachineType.Coffee] == MachineStatus.Hacking) {
+            sprite.enabled = true;
+        } else {
+            sprite.enabled = false;
+        }
+    }
+
+    private IEnumerator FreezeCoroutine(float damage, float damageRate) {
+        while (true) {
+            Damage(damage);
+            Instantiate(freezePrefab, transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(1f/damageRate);
+        }
+    }
+
+    public void ApplyFreeze(float speedReductionFactor, float damage, float damageRate) {
+        speed = speed * speedReductionFactor;
+        StartCoroutine(FreezeCoroutine(damage, damageRate));
     }
 
     // Update is called once per frame
     void Update()
     {
+        CheckVisibility();
         if (target) {
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
