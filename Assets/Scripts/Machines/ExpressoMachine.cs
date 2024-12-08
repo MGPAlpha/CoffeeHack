@@ -11,6 +11,7 @@ public class ExpressoMachine : Machine
     public float secondsToBrew = 2.0f;
 
     private GameObject heldCup;
+    private bool brew;
     protected override void InteractMachine(Cup cup)
     {
         if (machineStatus != MachineStatus.Coffee)
@@ -22,6 +23,7 @@ public class ExpressoMachine : Machine
         cup.canGrab = false;
         cup.transform.position = _attachPoint.transform.position;
         heldCup = cup.gameObject;
+        brew = true;
         CoroutineUtils.ExecuteAfterDelay(() => BrewExpresso(heldCup.GetComponent<Cup>()), this, secondsToBrew);
 
     }
@@ -36,6 +38,20 @@ public class ExpressoMachine : Machine
         cup.AddIngredient(Ingredient.Espresso);
         cup.canGrab = true;
         heldCup = null;
+        brew = false;
         MachineManager.SwitchMode(machineType, MachineStatus.Coffee);
+    }
+    public void Start()
+    {
+        base.Start();
+        brew = false;
+    }
+
+    public void Update()
+    {
+        if (brew)
+        {
+            heldCup.transform.position = _attachPoint.transform.position;
+        }
     }
 }
