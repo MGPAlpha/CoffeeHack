@@ -16,10 +16,10 @@ public class Dispenser : MonoBehaviour, IInteractable
             return;
         }
         Cup cup = (Cup)drag;
-        if (cup.ingredients.Contains(ingredient))
-        {
-            return;
-        }
+        // if (cup.ingredients.Contains(ingredient))
+        // {
+        //     return;
+        // }
         cup.AddIngredient(ingredient);
     }
 
@@ -32,7 +32,7 @@ public class Dispenser : MonoBehaviour, IInteractable
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void OnTriggerEnter2D(Collider2D col)

@@ -38,7 +38,7 @@ public class DragAndDrop : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        
+
     }
 
     public void FixedUpdate()
@@ -58,7 +58,7 @@ public class DragAndDrop : MonoBehaviour
         _spriteRenderer.sortingOrder = 10;
     }
 
-    public void Drop()
+    public virtual void Drop()
     {
         isHeld = false;
         if (_physicsEnabled)
