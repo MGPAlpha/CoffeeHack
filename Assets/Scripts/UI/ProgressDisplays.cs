@@ -9,6 +9,7 @@ public class ProgressDisplays : MonoBehaviour
     [SerializeField] private Slider healthDisplay;
     [SerializeField] private Slider strikesDisplay;
     [SerializeField] private Slider hackDisplay;
+    [SerializeField] private Slider fridgeDisplay;
     
     // Start is called before the first frame update
     void Start()
@@ -22,5 +23,6 @@ public class ProgressDisplays : MonoBehaviour
         healthDisplay.value = HackPlayer.Instance.Health / HackPlayer.Instance.MaxHealth;
         strikesDisplay.value = 1 - (float) StrikeManger._instance.numStrikes / StrikeManger._instance.maxStrikes;
         hackDisplay.value = 1 - GameManager._instance.timer / GameManager._instance.maxTime;
+        fridgeDisplay.value = 1 - Fridge.Instance.timeUnplugged / Fridge.Instance.maxUnpluggedTime;
     }
 }
