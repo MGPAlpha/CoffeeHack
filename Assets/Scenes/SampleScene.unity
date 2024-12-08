@@ -564,7 +564,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.29411766, g: 0.4117647, b: 0.18431373, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -885,6 +885,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 829749628527391966, guid: 1c41e651cb23fe3ea9fe6de7a52f76da, type: 3}
+      propertyPath: spawnEarnRate
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1792911083745427122, guid: 1c41e651cb23fe3ea9fe6de7a52f76da, type: 3}
       propertyPath: m_Name
       value: Hacking Scene
@@ -942,6 +946,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1764642501139054455, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
+      propertyPath: baseCustomerEarnRate
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3790117027407334621, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
       propertyPath: m_Name
       value: Cafe Scene
@@ -985,6 +993,14 @@ PrefabInstance:
     - target: {fileID: 5744085418752411978, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7038855948766910964, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7038855948766910964, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.050000012
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

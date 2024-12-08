@@ -19,13 +19,13 @@ public class CupStack : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void Click(GameObject gO)
@@ -45,7 +45,8 @@ public class CupStack : MonoBehaviour
     {
         GameObject gO = Instantiate(_cup);
         gO.transform.parent = gameObject.transform.parent;
-        gO.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(DragController.mousePos);
+        Vector2 vec = (Vector2)Camera.main.ScreenToWorldPoint(DragController.mousePos);
+        gO.transform.position = new Vector3(vec.x, vec.y, -10);
         CoroutineUtils.ExecuteAfterEndOfFrame(() => DragController._instance.HoldObject(gO), this);
     }
 }

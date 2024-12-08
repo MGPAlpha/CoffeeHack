@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Customer : MonoBehaviour
+public class Customer : MonoBehaviour, IInteractable
 {
     public List<Ingredient> order;
     public IngredientListRenderer ingredientListRenderer;
@@ -45,6 +45,8 @@ public class Customer : MonoBehaviour
 
     public void SubmitOrder(List<Ingredient> submittedOrder)
     {
+        print("submitting order");
+        print(string.Join(",", submittedOrder.ToArray()));
         bool correctOrder = order.SequenceEqual(submittedOrder);
         if (!correctOrder)
         {
@@ -53,6 +55,11 @@ public class Customer : MonoBehaviour
         GoAway();
     }
 
-
-
+    public void Interact(DragAndDrop drag)
+    {
+        Cup c = drag.GetComponent<Cup>();
+        if (!c || c == null) return;
+        SubmitOrder(c.ingredients);
+        c.TrashCup();
+    }
 }

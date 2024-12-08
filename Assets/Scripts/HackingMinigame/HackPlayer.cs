@@ -7,7 +7,8 @@ using UnityEngine.InputSystem;
 public class HackPlayer : MonoBehaviour
 {
 
-    public static HackPlayer Instance {
+    public static HackPlayer Instance
+    {
         get; private set;
     }
 
@@ -15,19 +16,21 @@ public class HackPlayer : MonoBehaviour
     [SerializeField] private float goodTurnSpeed = 200;
     [SerializeField] private float baseFirePeriod = 1;
     [SerializeField] private float firePeriodSpeedFactor = 5;
-    
+
     private bool atkHeld = false;
 
 
-    public float MaxHealth {
-        get {return maxHealth;}
-        private set {maxHealth = value;}
+    public float MaxHealth
+    {
+        get { return maxHealth; }
+        private set { maxHealth = value; }
     }
     [SerializeField] private float maxHealth = 50;
 
-    public float Health {
-        get {return health;}
-        private set {health = value;}
+    public float Health
+    {
+        get { return health; }
+        private set { health = value; }
     }
     [SerializeField] private float health;
 
@@ -40,7 +43,8 @@ public class HackPlayer : MonoBehaviour
 
     private bool controlsEnabled;
 
-    void Awake() {
+    void Awake()
+    {
         Instance = this;
     }
 
@@ -70,33 +74,40 @@ public class HackPlayer : MonoBehaviour
 
         fireCooldown = Mathf.MoveTowards(fireCooldown, 0, Time.deltaTime * (fastFire ? firePeriodSpeedFactor : 1));
 
-        if (fastFire && atkHeld && fireCooldown <= 0) {
+        if (fastFire && atkHeld && fireCooldown <= 0)
+        {
             OnAttack();
         }
     }
 
-    void OnAttack() {
+    void OnAttack()
+    {
         if (!controlsEnabled) return;
-        if (fireCooldown == 0) {
+        if (fireCooldown == 0)
+        {
             Instantiate(bulletPrefab, transform.position, transform.rotation);
             fireCooldown = baseFirePeriod;
         }
     }
 
-    void OnAttackHold(InputValue v) {
+    void OnAttackHold(InputValue v)
+    {
         Debug.Log("AttackHold");
         atkHeld = v.isPressed;
 
     }
 
-    public void Damage(float val) {
+    public void Damage(float val)
+    {
         health -= val;
-        if (health <= 0) {
-            Debug.Log("Dead");
+        if (health <= 0)
+        {
+            GameManager._instance.LoseGame();
         }
     }
 
-    public void EnableControls(bool en) {
+    public void EnableControls(bool en)
+    {
         controlsEnabled = en;
     }
 }

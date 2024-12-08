@@ -13,10 +13,10 @@ public class DragIngredient : DragAndDrop, IInteractable
             return;
         }
         Cup cup = (Cup)drag;
-        if (cup.ingredients.Contains(ingredient))
-        {
-            return;
-        }
+        // if (cup.ingredients.Contains(ingredient))
+        // {
+        //     return;
+        // }
         cup.AddIngredient(ingredient);
     }
 
