@@ -15,6 +15,11 @@ public class HackPlayer : MonoBehaviour
     [SerializeField] private float baseFirePeriod = 1;
     [SerializeField] private float firePeriodSpeedFactor = 5;
 
+    [SerializeField] private bool tempFastFire;
+    
+    private bool atkHeld = false;
+
+
     public float MaxHealth {
         get {return maxHealth;}
         private set {maxHealth = value;}
@@ -54,7 +59,11 @@ public class HackPlayer : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0, 0, -turn * turnSpeed * Time.deltaTime) * transform.rotation;
 
-        fireCooldown = Mathf.MoveTowards(fireCooldown, 0, Time.deltaTime);
+        fireCooldown = Mathf.MoveTowards(fireCooldown, 0, Time.deltaTime * (tempFastFire ? firePeriodSpeedFactor : 1));
+
+        if (tempFastFire && atkHeld && fireCooldown <= 0) {
+            OnAttack();
+        }
     }
 
     void OnAttack() {
@@ -62,6 +71,12 @@ public class HackPlayer : MonoBehaviour
             Instantiate(bulletPrefab, transform.position, transform.rotation);
             fireCooldown = baseFirePeriod;
         }
+    }
+
+    void OnAttackHold(InputValue v) {
+        Debug.Log("AttackHold");
+        atkHeld = v.isPressed;
+
     }
 
     public void Damage(float val) {
