@@ -20,7 +20,7 @@ public class DragController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        playerActionMap = _playerControls.FindActionMap("Player");
+        playerActionMap = _playerControls.FindActionMap("Drag and Drop");
         playerDragAction = playerActionMap.FindAction("Click");
         playerPointAction = playerActionMap.FindAction("Pointer");
 
