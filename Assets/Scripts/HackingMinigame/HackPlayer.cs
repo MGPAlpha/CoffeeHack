@@ -38,6 +38,8 @@ public class HackPlayer : MonoBehaviour
 
     private float fireCooldown = 0;
 
+    private bool controlsEnabled;
+
     void Awake() {
         Instance = this;
     }
@@ -54,6 +56,10 @@ public class HackPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (!controlsEnabled) return;
+
+
         float turn = m_turnAction.ReadValue<float>();
 
         bool useGoodTurn = MachineManager._instance.machineStatusDictionary[MachineType.Blender] == MachineStatus.Hacking;
@@ -70,6 +76,7 @@ public class HackPlayer : MonoBehaviour
     }
 
     void OnAttack() {
+        if (!controlsEnabled) return;
         if (fireCooldown == 0) {
             Instantiate(bulletPrefab, transform.position, transform.rotation);
             fireCooldown = baseFirePeriod;
@@ -87,5 +94,9 @@ public class HackPlayer : MonoBehaviour
         if (health <= 0) {
             Debug.Log("Dead");
         }
+    }
+
+    public void EnableControls(bool en) {
+        controlsEnabled = en;
     }
 }
