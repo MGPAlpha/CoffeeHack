@@ -14,13 +14,13 @@ public class LaserSight : MonoBehaviour
     {
         line = GetComponent<LineRenderer>();
         layers = LayerMask.GetMask("HackWalls");
-        line.SetPosition(0, transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
         RaycastHit2D ray = Physics2D.Raycast(transform.position, transform.up, 1000, layers);
+        line.SetPosition(0, transform.position);
         line.SetPosition(1, transform.position + transform.up * ray.distance);
     }
 }

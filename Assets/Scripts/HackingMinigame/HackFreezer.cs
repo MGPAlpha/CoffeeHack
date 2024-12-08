@@ -7,6 +7,7 @@ public class HackFreezer : MonoBehaviour
 
     private SpriteRenderer sp;
     private Collider2D col;
+    private LineRenderer ln;
     
     [SerializeField] private float speedReductionFactor = .15f;
     [SerializeField] private float freezeDamage = .1f;
@@ -17,6 +18,17 @@ public class HackFreezer : MonoBehaviour
     {
         sp = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
+        ln = GetComponent<LineRenderer>();
+
+        ln.positionCount = 0;
+        int positionCount = 16;
+        ln.positionCount = positionCount;
+        for (int i = 0; i < positionCount; i++) {
+            float degrees = (float)i/positionCount * 360f;
+            Vector3 pos = (Quaternion.Euler(0, 0, degrees) * Vector3.left) * 0.5f;
+            ln.SetPosition(i, pos);
+        }
+
         SetVisibility();
     }
 
@@ -30,10 +42,12 @@ public class HackFreezer : MonoBehaviour
         if (MachineManager._instance.machineStatusDictionary[MachineType.Fridge] == MachineStatus.Hacking) {
             sp.enabled = true;
             col.enabled = true;
+            ln.enabled = true;
         }
         else {
             sp.enabled = false;
             col.enabled = false;
+            ln.enabled = false;
         }
     }
 
