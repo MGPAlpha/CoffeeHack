@@ -979,10 +979,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f69594daca949521a8286e8b371b3fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSpeed: 200
+  turnSpeed: 360
+  goodTurnSpeed: 200
   baseFirePeriod: 1
   firePeriodSpeedFactor: 5
-  tempFastFire: 1
   maxHealth: 50
   health: 0
   bulletPrefab: {fileID: 2427754324080493382, guid: b6aafd3b12956749b9e08ba7d025aba5, type: 3}

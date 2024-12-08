@@ -6,6 +6,7 @@ public class HackEnemy : MonoBehaviour
 {
 
     [SerializeField] private ParticleSystem particleSystem;
+    private SpriteRenderer sprite;
     
     [SerializeField] private GameObject explosionPrefab;
     [SerializeField] private GameObject hitPrefab;
@@ -19,12 +20,22 @@ public class HackEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        sprite = GetComponentInChildren<SpriteRenderer>();
+        CheckVisibility();
+    }
+
+    void CheckVisibility() {
+        if (MachineManager._instance.machineStatusDictionary[MachineType.Coffee] == MachineStatus.Hacking) {
+            sprite.enabled = true;
+        } else {
+            sprite.enabled = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        CheckVisibility();
         if (target) {
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
