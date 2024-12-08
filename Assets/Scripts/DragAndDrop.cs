@@ -6,7 +6,9 @@ using UnityEngine;
 public class DragAndDrop : MonoBehaviour
 {
     [SerializeField] private Collider2D _overlapTrigger;
+    [SerializeField] private Collider2D _rigidCollider;
     [SerializeField] private bool _physicsEnabled;
+
 
     private Rigidbody2D _rb;
     public List<Collider2D> triggers;
@@ -44,6 +46,10 @@ public class DragAndDrop : MonoBehaviour
     {
         isHeld = true;
         offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(DragController.mousePos);
+        if (_physicsEnabled)
+        {
+            _rigidCollider.enabled = false;
+        }
     }
 
     public void Drop()
@@ -51,6 +57,7 @@ public class DragAndDrop : MonoBehaviour
         isHeld = false;
         if (_physicsEnabled)
         {
+            _rigidCollider.enabled = true;
             _rb.velocity = DragController.mousePos - DragController.prevMousePos;
         }
         else

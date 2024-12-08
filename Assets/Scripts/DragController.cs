@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,6 +17,7 @@ public class DragController : MonoBehaviour
 
     public static event Action<GameObject> ClickAction;
     public static event Action<GameObject> StartClickAction;
+    public static event Action<GameObject> HoverAction;
 
     public static Vector2 mousePos;
     public static Vector2 prevMousePos;
@@ -25,6 +27,7 @@ public class DragController : MonoBehaviour
     public DragAndDrop heldObject;
     public GameObject topObject;
 
+    private string[] _maskStrings = { "Coffee", "UI" };
     private float _mouseDown;
 
 
@@ -60,6 +63,12 @@ public class DragController : MonoBehaviour
     void Update()
     {
         mousePos = playerPointAction.ReadValue<Vector2>();
+        Ray mouseRay = Camera.main.ScreenPointToRay(mousePos);
+        RaycastHit2D hit = Physics2D.Raycast(mouseRay.origin, mouseRay.direction);
+        if (hit)
+        {
+            HoverAction?.Invoke(hit.transform.gameObject);
+        }
     }
 
     void FixedUpdate()
@@ -82,18 +91,30 @@ public class DragController : MonoBehaviour
         Debug.Log("Mouse Down");
         _mouseDown = Time.time;
         Ray mouseRay = Camera.main.ScreenPointToRay(mousePos);
-        RaycastHit2D hit = Physics2D.Raycast(mouseRay.origin, mouseRay.direction);
-        if (hit)
+        
+        LayerMask mask = LayerMask.GetMask(_maskStrings);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(mouseRay.origin, mouseRay.direction, mask);
+        float closestDist = Single.PositiveInfinity;
+        foreach (var hit in hits)
         {
-            topObject = hit.collider.transform.gameObject;
-            HoldObject(topObject);
-            
+            GameObject gO = hit.collider.transform.gameObject;
+            float dist = Vector3.Distance(gO.transform.position, mouseRay.origin);
+            if (dist < closestDist)
+            {
+                topObject = gO.layer == LayerMask.GetMask("UI") ? null : gO;
+                closestDist = dist;
+            }
         }
+        HoldObject(topObject);
         StartClickAction?.Invoke(topObject);
     }
 
     public void HoldObject(GameObject gO)
     {
+        if (!gO)
+        {
+            return;
+        }
         DragAndDrop drag = gO.GetComponent<DragAndDrop>();
         if (drag)
         {

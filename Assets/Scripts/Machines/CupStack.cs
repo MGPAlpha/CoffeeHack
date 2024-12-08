@@ -14,7 +14,7 @@ public class CupStack : MonoBehaviour
 
     void OnDisable()
     {
-
+        DragController.StartClickAction -= Click;
     }
 
     void Start()
@@ -30,6 +30,11 @@ public class CupStack : MonoBehaviour
 
     public void Click(GameObject gO)
     {
+        if (!gO)
+        {
+            return;
+        }
+
         if (gameObject.Equals(gO))
         {
             GetCup();
@@ -39,7 +44,8 @@ public class CupStack : MonoBehaviour
     public void GetCup()
     {
         GameObject gO = Instantiate(_cup);
-        gO.transform.position = Camera.main.ScreenToWorldPoint(DragController.mousePos);
-        DragController._instance.HoldObject(gO);
+        gO.transform.parent = gameObject.transform.parent;
+        gO.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(DragController.mousePos);
+        CoroutineUtils.ExecuteAfterEndOfFrame(() => DragController._instance.HoldObject(gO), this);
     }
 }

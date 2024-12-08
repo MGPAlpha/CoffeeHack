@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 6945984636708489645}
   - component: {fileID: 2732004660815179432}
   - component: {fileID: 9146054478183498498}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Coffee Jug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,6 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _overlapTrigger: {fileID: 6945984636708489645}
+  _rigidCollider: {fileID: 3641115358851064391}
   _physicsEnabled: 0
   triggers: []
   offset: {x: 0, y: 0, z: 0}
@@ -347,7 +348,7 @@ GameObject:
   - component: {fileID: 283319152287627426}
   - component: {fileID: 1786689512611470827}
   - component: {fileID: 9072228200969502395}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Coffee Machine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -481,7 +482,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coffeeJug: {fileID: 2732004660815179432}
-  _coffeeButton: {fileID: 2861511930923510059}
   secondsToMakeCoffee: 5
 --- !u!50 &9072228200969502395
 Rigidbody2D:

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Cup : DragAndDrop, IInteractable
 {
+    [SerializeField] private Canvas _ingredientCanvas;
+    [SerializeField] private IngredientListRenderer _ingredientListRenderer;
     public List<Ingredient> ingredients;
 
     public int Priority { get => 10;}
@@ -13,6 +15,7 @@ public class Cup : DragAndDrop, IInteractable
     public void Start()
     {
         base.Start();
+        _ingredientCanvas.enabled = false;
         ingredients = new List<Ingredient>();
     }
 
@@ -33,10 +36,11 @@ public class Cup : DragAndDrop, IInteractable
     public void AddIngredient(Ingredient ingredient)
     {
         ingredients.Add(ingredient);
+        _ingredientListRenderer.ingredientList.Add(ingredient);
     }
 
     public void TrashCup()
     {
-        Destroy(this);
+        Destroy(gameObject);
     }
 }
