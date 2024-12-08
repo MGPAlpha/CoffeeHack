@@ -11,11 +11,10 @@ public class HackPlayer : MonoBehaviour
         get; private set;
     }
 
-    [SerializeField] private float turnSpeed = 5f;
+    [SerializeField] private float turnSpeed = 360;
+    [SerializeField] private float goodTurnSpeed = 200;
     [SerializeField] private float baseFirePeriod = 1;
     [SerializeField] private float firePeriodSpeedFactor = 5;
-
-    [SerializeField] private bool tempFastFire;
     
     private bool atkHeld = false;
 
@@ -57,11 +56,15 @@ public class HackPlayer : MonoBehaviour
     {
         float turn = m_turnAction.ReadValue<float>();
 
-        transform.rotation = Quaternion.Euler(0, 0, -turn * turnSpeed * Time.deltaTime) * transform.rotation;
+        bool useGoodTurn = MachineManager._instance.machineStatusDictionary[MachineType.Blender] == MachineStatus.Hacking;
 
-        fireCooldown = Mathf.MoveTowards(fireCooldown, 0, Time.deltaTime * (tempFastFire ? firePeriodSpeedFactor : 1));
+        transform.rotation = Quaternion.Euler(0, 0, -turn * (useGoodTurn ? goodTurnSpeed : turnSpeed) * Time.deltaTime) * transform.rotation;
 
-        if (tempFastFire && atkHeld && fireCooldown <= 0) {
+        bool fastFire = MachineManager._instance.machineStatusDictionary[MachineType.Espresso] == MachineStatus.Hacking;
+
+        fireCooldown = Mathf.MoveTowards(fireCooldown, 0, Time.deltaTime * (fastFire ? firePeriodSpeedFactor : 1));
+
+        if (fastFire && atkHeld && fireCooldown <= 0) {
             OnAttack();
         }
     }
