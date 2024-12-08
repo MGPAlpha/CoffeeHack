@@ -36,5 +36,6 @@ public class ExpressoMachine : Machine
         cup.AddIngredient(Ingredient.Espresso);
         cup.canGrab = true;
         heldCup = null;
+        MachineManager.SwitchMode(machineType, MachineStatus.Coffee);
     }
 }
