@@ -11,6 +11,7 @@ public class BlenderMachine : Machine
     public float secondsToBlend = 6.0f;
 
     private GameObject heldCup;
+    private bool blending;
     protected override void InteractMachine(Cup cup)
     {
         if (machineStatus != MachineStatus.Coffee)
@@ -27,6 +28,7 @@ public class BlenderMachine : Machine
         cup.canGrab = false;
         cup.transform.position = _attachPoint.transform.position;
         heldCup = cup.gameObject;
+        blending = true;
         CoroutineUtils.ExecuteAfterDelay(() => Blend(heldCup.GetComponent<Cup>()), this, secondsToBlend);
 
     }
@@ -41,6 +43,21 @@ public class BlenderMachine : Machine
         cup.AddIngredient(Ingredient.Blender);
         cup.canGrab = true;
         heldCup = null;
+        blending = false;
         MachineManager.SwitchMode(machineType, MachineStatus.Coffee);
+    }
+
+    public void Start()
+    {
+        base.Start();
+        blending = false;
+    }
+
+    public void Update()
+    {
+        if (blending)
+        {
+            heldCup.transform.position = _attachPoint.transform.position;
+        }
     }
 }
