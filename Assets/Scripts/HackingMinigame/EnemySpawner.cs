@@ -8,7 +8,8 @@ public class EnemySpawner : MonoBehaviour
 {
 
     [Serializable]
-    class SpawnType {
+    class SpawnType
+    {
         [SerializeField] public GameObject prefab;
         [SerializeField] public float cost;
         [SerializeField] public float weightScale;
@@ -16,7 +17,7 @@ public class EnemySpawner : MonoBehaviour
     }
     [SerializeField] private float radius = 3;
 
-    [SerializeField] private float duration = 10*60;
+    [SerializeField] private float duration = 10 * 60;
     [SerializeField] private float spawnEarnRate = 2;
     [SerializeField] private AnimationCurve spawnEarnRateCurve;
     [SerializeField] private List<SpawnType> spawns;
@@ -33,7 +34,8 @@ public class EnemySpawner : MonoBehaviour
         StartSpawning();
     }
 
-    void StartSpawning() {
+    void StartSpawning()
+    {
         started = true;
         time = 0;
     }
@@ -45,16 +47,21 @@ public class EnemySpawner : MonoBehaviour
         float timePercent = time / duration;
         timePercent = Mathf.Min(timePercent, 1);
 
-        if (nextSpawn == null) {
+        if (nextSpawn == null)
+        {
             IEnumerable<(SpawnType, float)> evaluatedWeights = from s in spawns select (s, s.weight.Evaluate(timePercent) * s.weightScale);
             float weightSum = (from s in evaluatedWeights select s.Item2).Sum();
 
             float r = UnityEngine.Random.Range(0, weightSum);
-            foreach ((SpawnType, float) s in evaluatedWeights) {
-                if (r < s.Item2) {
+            foreach ((SpawnType, float) s in evaluatedWeights)
+            {
+                if (r < s.Item2)
+                {
                     nextSpawn = s.Item1;
                     break;
-                } else {
+                }
+                else
+                {
                     r -= s.Item2;
                 }
             }
@@ -63,7 +70,8 @@ public class EnemySpawner : MonoBehaviour
         float currEarnRate = spawnEarnRateCurve.Evaluate(timePercent) * spawnEarnRate;
         earned += currEarnRate * Time.deltaTime;
 
-        if (nextSpawn != null && earned >= nextSpawn.cost) {
+        if (nextSpawn != null && earned >= nextSpawn.cost)
+        {
             Spawn(nextSpawn);
             earned -= nextSpawn.cost;
             nextSpawn = null;
@@ -72,7 +80,8 @@ public class EnemySpawner : MonoBehaviour
         time += Time.deltaTime;
     }
 
-    void Spawn(SpawnType s) {
+    void Spawn(SpawnType s)
+    {
         float spawnAngle = UnityEngine.Random.Range(-180, 180);
         Vector3 spawnDir = Quaternion.Euler(0, 0, spawnAngle) * Vector3.up;
         Vector3 spawnPos = transform.position + spawnDir * radius;
@@ -80,8 +89,11 @@ public class EnemySpawner : MonoBehaviour
         newEnemy.target = HackPlayer.Instance.transform;
     }
 
+
+    #if UNITY_EDITOR
     void OnDrawGizmos() {
         UnityEditor.Handles.color = Color.red;
         UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.forward, radius);
     }
+    #endif
 }
