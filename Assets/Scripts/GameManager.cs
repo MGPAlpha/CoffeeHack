@@ -6,6 +6,12 @@ public class GameManager : Singleton<GameManager>
 {
     public float timer = 5 * 60;
 
+    void Awake() {
+        if (_instance == null) {
+            InitializeSingleton();
+        }
+    }
+
     private void Update()
     {
         timer -= Time.deltaTime;
