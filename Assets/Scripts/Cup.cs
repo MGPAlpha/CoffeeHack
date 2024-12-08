@@ -47,6 +47,7 @@ public class Cup : DragAndDrop, IInteractable
 
     public void TrashCup()
     {
+        DragController.HoverAction -= ShowCanvas;
         Destroy(gameObject);
     }
 

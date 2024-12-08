@@ -44,6 +44,7 @@ public class CupStack : MonoBehaviour
     public void GetCup()
     {
         GameObject gO = Instantiate(_cup);
+        gO.transform.parent = gameObject.transform.parent;
         gO.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(DragController.mousePos);
         CoroutineUtils.ExecuteAfterEndOfFrame(() => DragController._instance.HoldObject(gO), this);
     }
