@@ -47,6 +47,14 @@ public class MachineManager : MonoBehaviour
       SetStatus(m, MachineStatus.Waiting);
       CoroutineUtils.ExecuteAfterDelay(() => SetStatus(m, status), this, delayCoffeeToHacking);
     }
+    if (currStatus == MachineStatus.Coffee && status == MachineStatus.Running)
+    {
+        SetStatus(m, MachineStatus.Running);
+    }
+    if (currStatus == MachineStatus.Running && status == MachineStatus.Coffee)
+    {
+        SetStatus(m, MachineStatus.Coffee);
+    }
   }
 
   public static void SwitchMode(MachineType m, MachineStatus status)
