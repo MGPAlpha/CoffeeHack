@@ -89,11 +89,11 @@ public class EnemySpawner : MonoBehaviour
         newEnemy.target = HackPlayer.Instance.transform;
     }
 
-    void OnDrawGizmos()
-    {
-#if UNITY_EDITOR
+
+    #if UNITY_EDITOR
+    void OnDrawGizmos() {
         UnityEditor.Handles.color = Color.red;
         UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.forward, radius);
-#endif
     }
+    #endif
 }
