@@ -9,7 +9,7 @@ public class Cup : DragAndDrop, IInteractable
     [SerializeField] private IngredientListRenderer _ingredientListRenderer;
     public List<Ingredient> ingredients;
 
-    public int Priority { get => 10;}
+    public int Priority { get => 10; }
 
     // Start is called before the first frame update
     public void Start()
@@ -63,5 +63,11 @@ public class Cup : DragAndDrop, IInteractable
             return;
         }
         _ingredientCanvas.enabled = false;
+    }
+
+    public override void Drop()
+    {
+        base.Drop();
+        _spriteRenderer.sortingOrder = 10;
     }
 }

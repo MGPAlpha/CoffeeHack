@@ -378,6 +378,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6277050333225346765}
+  - component: {fileID: 2494778737869123435}
   m_Layer: 0
   m_Name: Fridge
   m_TagString: Untagged
@@ -403,6 +404,19 @@ Transform:
   - {fileID: 6783052378280208820}
   m_Father: {fileID: 5744085418752411978}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2494778737869123435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707627633654974107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8f2c7b39b6fb4239f5c7951baf3103, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxUnpluggedTime: 15
 --- !u!1 &2135108776970820711
 GameObject:
   m_ObjectHideFlags: 0
