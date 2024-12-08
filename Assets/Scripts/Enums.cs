@@ -13,3 +13,12 @@ public enum MachineType
     Espresso,
     Blender
 }
+
+public enum Ingredient
+{
+    Coffee,
+    Milk,
+    Oat_Milk,
+    Espresso,
+    Ice
+}
