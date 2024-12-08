@@ -8,8 +8,10 @@ public class GameManager : Singleton<GameManager>
     public float timer = 5 * 60;
     public float maxTime;
 
-    void Awake() {
-        if (_instance == null) {
+    void Awake()
+    {
+        if (_instance == null)
+        {
             InitializeSingleton();
         }
         maxTime = timer;
@@ -26,11 +28,11 @@ public class GameManager : Singleton<GameManager>
 
     public void WinGame()
     {
-        Debug.Log("You win!");
+        SceneManager.LoadScene("WinScene");
     }
 
     public void LoseGame()
     {
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("LoseScene");
     }
 }
