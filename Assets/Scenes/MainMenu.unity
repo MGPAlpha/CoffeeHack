@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e3bb763c4d250468f5b79912bf8514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameScene: CoffeeShop
+  gameScene: SampleScene
 --- !u!4 &30485415
 Transform:
   m_ObjectHideFlags: 0
