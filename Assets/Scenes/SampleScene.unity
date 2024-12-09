@@ -946,10 +946,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1764642501139054455, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
-      propertyPath: baseCustomerEarnRate
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 3790117027407334621, guid: 487e0f50b12021e048824ca2c20caf17, type: 3}
       propertyPath: m_Name
       value: Cafe Scene
@@ -1020,6 +1016,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3646701400602754894, guid: 439a2f89aa39d6cc2b225dcde0081752, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577111464726678242, guid: 439a2f89aa39d6cc2b225dcde0081752, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}

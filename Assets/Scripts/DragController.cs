@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -56,7 +55,7 @@ public class DragController : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -95,7 +94,7 @@ public class DragController : MonoBehaviour
         Debug.Log("Mouse Down");
         _mouseDown = Time.time;
         Ray mouseRay = Camera.main.ScreenPointToRay(mousePos);
-        
+
         LayerMask mask = LayerMask.GetMask(_maskStrings);
         RaycastHit2D[] hits = Physics2D.RaycastAll(mouseRay.origin, mouseRay.direction, mask);
         float closestDist = Single.PositiveInfinity;

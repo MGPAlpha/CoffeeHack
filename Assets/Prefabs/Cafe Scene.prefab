@@ -1481,7 +1481,7 @@ MonoBehaviour:
   spawnLocation: {fileID: 7038855948766910964}
   offset: {x: 3, y: 0, z: 0}
   overallDuration: 600
-  baseCustomerEarnRate: 0.1
+  baseCustomerEarnRate: 0.15
   customerEarnRateCurve:
     serializedVersion: 2
     m_Curve:
